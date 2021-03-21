@@ -1,6 +1,5 @@
-﻿  Main.cpp
-F:\Projects\Lab Routine Management System\Lab Routine Management System\Main.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\Projects\Lab Routine Management System\Lab Routine Management System\Main.cpp(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\Projects\Lab Routine Management System\Lab Routine Management System\Main.cpp(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\Projects\Lab Routine Management System\Lab Routine Management System\Main.cpp(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+﻿  Admin.cpp
+  Control.cpp
+  Main.cpp
+  Generating Code...
   Lab Routine Management System.vcxproj -> F:\Projects\Lab Routine Management System\Debug\Lab Routine Management System.exe

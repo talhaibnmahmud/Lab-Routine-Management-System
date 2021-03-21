@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Control.cpp" />
     <ClCompile Include="Coordinator.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
+    <ClInclude Include="Control.h" />
     <ClInclude Include="Coordinator.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="Student.h" />

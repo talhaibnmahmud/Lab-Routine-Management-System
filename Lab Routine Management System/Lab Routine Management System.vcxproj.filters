@@ -30,6 +30,9 @@
     <ClCompile Include="Coordinator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Control.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Coordinator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Control.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

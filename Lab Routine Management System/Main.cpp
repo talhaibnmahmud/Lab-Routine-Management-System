@@ -1,27 +1,17 @@
 // #include<iostream>
 
-#include "Admin.h";
-#include "Coordinator.h";
-#include "Device.h";
-#include "Student.h";
+#include "Admin.h"
+#include "Control.h"
+#include "Coordinator.h"
+#include "Device.h"
+#include "Student.h"
 
 int main()
 {
-	Admin admin;
-	admin.createAccount();
-	admin.createLab();
+	Control control;
 
-	Coordinator coordinator;
-	coordinator.addDevice();
-	coordinator.deleteDevice();
-	coordinator.makeRoutine();
-	coordinator.updateDevice();
-
-	Device device;
-	device.createDevice();
-	device.deleteDevice();
-	device.updateDevice();
-
-	Student student;
-	student.getRoutine();
+	while (true)
+	{
+		control.mainMenu();
+	}
 }
