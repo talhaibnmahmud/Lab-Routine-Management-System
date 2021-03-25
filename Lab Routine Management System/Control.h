@@ -1,9 +1,11 @@
 #pragma once
 
-#include <iostream>
+// #include <iostream>
 #include <Windows.h>
 
 #include "Admin.h"
+#include "Coordinator.h"
+#include "Student.h"
 
 class Control
 {
