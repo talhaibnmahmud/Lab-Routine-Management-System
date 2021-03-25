@@ -45,7 +45,7 @@ void Control::handleAdmin()
 	system("CLS");
 
 	std::cout << "1. Login as Admin" << std::endl;
-	std::cout << "2. Exit" << std::endl;
+	std::cout << "2. Main Menu" << std::endl;
 
 	Admin admin;
 	int choice = 0;
@@ -69,12 +69,34 @@ void Control::handleAdmin()
 
 void Control::handleCoordinator()
 {
-	std::cout << "Yet to Implement!" << std::endl;
-	std::cin.get();
+	Coordinator coordinator;
+	int choice = 0;
+	while (true)
+	{
+		system("CLS");
+
+		std::cout << "1. Login as Coordinator" << std::endl;
+		std::cout << "2. Main Menu" << std::endl;
+		std::cin >> choice;
+
+		if (choice == 2) return;
+		if (choice == 1) coordinator.login();
+	}
 }
 
 void Control::handleStudent()
 {
-	std::cout << "Yet to Implement!" << std::endl;
-	std::cin.get();
+	Student student;
+	int choice = 0;
+	while (true)
+	{
+		system("CLS");
+
+		std::cout << "1. Login as Student" << std::endl;
+		std::cout << "2. Main Menu" << std::endl;
+		std::cin >> choice;
+
+		if (choice == 2) return;
+		if (choice == 1) student.login();
+	}
 }

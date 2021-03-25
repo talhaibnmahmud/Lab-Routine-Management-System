@@ -1,14 +1,27 @@
 #pragma once
 
+// #include <set>
+
+#include <algorithm>
+#include <array>
+#include <fstream>
+#include <ios>
 #include <iostream>
+#include <limits>
+#include <map>
+#include <sstream>
+#include <string>
+#include <vector>
+
+#include "Device.h"
+
 
 class Coordinator
 {
 public:
-	Coordinator() 
-	{
-		std::cout << "Coordinator Instantiated\n";
-	}
+
+	void login();
+	void menu();
 
 	void addDevice();
 	void updateDevice();
