@@ -11,56 +11,51 @@ const std::string Admin::PASSWORD = std::string("@dmin@U$T");
 
 void Admin::adminMenu()
 {
-	system("CLS");
-
-	std::cout << "1. Create Account" << std::endl;
-	std::cout << "2. Create Lab" << std::endl;
-	std::cout << "3. Logout" << std::endl;
-
-	int choice = 0;
-	std::cin >> choice;
-
-	switch (choice)
+	enum Options
 	{
-	case 1:
-		std::cout << choice << std::endl;
-		std::cin.get();
-		createAccount();
-		break;
-	case 2:
-		std::cout << choice << std::endl;
-		std::cin.get();
-		createLab();
-		break;
-	case 3:
-		return;
-	default:
-		std::cout << choice << std::endl;
-		break;
+		Logout, CreateAccount, CreateLab
+	};
+	int16_t choice = 0;
+
+	while (true)
+	{
+		system("CLS");
+
+		std::cout << "1. Create Account" << std::endl;
+		std::cout << "2. Create Lab" << std::endl;
+		std::cout << "0. Logout" << std::endl;
+
+		std::cin >> choice;
+		std::cin.ignore();
+
+		if (choice == Logout) return;
+
+		if (choice == CreateAccount) createAccount();
+		if (choice == CreateLab) createLab();
 	}
 }
 
 void Admin::createAccount()
 {
-	std::cout << "Creating New Account" << std::endl;
-
+	enum Options
+	{
+		GoBack, CreateCoordinator, CreateStudent
+	};
+	int16_t choice = 0;
 	while (true)
 	{
 		system("CLS");
 		std::cout << "1. Create Coordinator" << std::endl;
 		std::cout << "2. Create Student" << std::endl;
-		std::cout << "3. Go Back" << std::endl;
+		std::cout << "0. Go Back" << std::endl;
 
-		int option = 0; 
-		std::cin >> option;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		// std::cout << option << std::endl;
+		std::cin >> choice;
+		std::cin.ignore();
 
-		if (option == 3) break;
-		if (option == 1) createCoordinator();
-		if (option == 2) createStudent();
+		if (choice == GoBack) break;
+		if (choice == CreateCoordinator) createCoordinator();
+		if (choice == CreateStudent) createStudent();
 	}
-	// std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 
 void Admin::login()
@@ -74,11 +69,10 @@ void Admin::login()
 	std::cin >> username;
 	std::cout << "Enter Password: ";
 	std::cin >> password;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	if (username == USERNAME && password == PASSWORD)
 	{
-		// std::cout << "LOGGED IN!" << std::endl;
-		// std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		adminMenu();
 	}
 	else {
@@ -95,11 +89,10 @@ void Admin::createLab()
 	std::vector<std::string> coordinators;
 	std::vector<std::string> labs;
 
-
 	coordinator_ifs.open(COORDINATOR_FILE, std::ios::in);
 	if (coordinator_ifs.is_open())
 	{
-		std::string line, word, temp;
+		std::string line, word;
 		while (std::getline(coordinator_ifs, line))
 		{
 			std::stringstream s(line);
@@ -113,7 +106,7 @@ void Admin::createLab()
 	lab_ifs.open(LAB_FILE, std::ios::in);
 	if (lab_ifs.is_open())
 	{
-		std::string line, word, temp;
+		std::string line, word;
 		while (std::getline(lab_ifs, line))
 		{
 			std::stringstream s(line);
@@ -124,7 +117,7 @@ void Admin::createLab()
 		lab_ifs.close();
 	}
 
-	lab_ofs.open(LAB_FILE, std::ios::out | std::ios::app);
+	lab_ofs.open(LAB_FILE, std::ios::app | std::ios::out);
 	if (lab_ofs.is_open())
 	{
 		std::string lab_name = std::string("");
@@ -132,9 +125,9 @@ void Admin::createLab()
 
 		std::cout << "Enter a unique Lab: ";
 		std::cin >> lab_name;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "Assign a coordinator: ";
 		std::cin >> lab_coordinator;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		if (std::find(coordinators.begin(), coordinators.end(), lab_coordinator) != coordinators.end()
 			&& std::find(labs.begin(), labs.end(), lab_name) == labs.end())
@@ -158,17 +151,20 @@ void Admin::createCoordinator()
 		std::cout << "Enter username: ";
 		std::string username = std::string("");
 		std::cin >> username;
-		fs << username << ",";
 
 		std::cout << "Enter Password: ";
 		std::string password = std::string("");
 		std::cin >> password;
+
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		fs << username << ",";
 		fs << password << std::endl;
 
 		std::cout << "Coordinator created: " << username << std::endl;
 		std::this_thread::sleep_for(std::chrono::microseconds(3000));
+
+		fs.close();
 	}
-	fs.close();
 }
 
 void Admin::createStudent()
@@ -180,15 +176,18 @@ void Admin::createStudent()
 		std::cout << "Enter username: ";
 		std::string username = std::string("");
 		std::cin >> username;
-		fs << username << ",";
 
 		std::cout << "Enter password: ";
 		std::string password = std::string("");
 		std::cin >> password;
+
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		fs << username << ",";
 		fs << password << std::endl;
 
 		std::cout << "Student created: " << username << std::endl;
 		std::this_thread::sleep_for(std::chrono::microseconds(3000));
+
+		fs.close();
 	}
-	fs.close();
 }
